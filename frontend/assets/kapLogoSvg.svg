@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="207px" height="206px" viewBox="0 0 207 206" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3 Copy</title>
+    <defs>
+        <linearGradient x1="50.2313035%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#00FEA2" offset="0%"></stop>
+            <stop stop-color="#29CCBB" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#00FEA2" offset="0%"></stop>
+            <stop stop-color="#20D7B5" offset="81.5954373%"></stop>
+            <stop stop-color="#29CCBB" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50.0000001%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#00FEA2" offset="0%"></stop>
+            <stop stop-color="#20D7B5" offset="41.7325546%"></stop>
+            <stop stop-color="#29CCBB" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Logo-9-" transform="translate(-68.000000, -280.000000)" fill-rule="nonzero">
+            <g id="Group-3-Copy" transform="translate(171.637550, 383.034325) rotate(45.000000) translate(-171.637550, -383.034325) translate(93.137550, 316.034325)">
+                <circle id="Oval" fill="url(#linearGradient-1)" cx="61.9335182" cy="16.2671898" r="16"></circle>
+                <path d="M37.1864794,54.5928117 C37.42717,54.7956675 37.6511211,55.0171847 37.8562031,55.2552568 L61.640625,84.1875 L29.640625,121.1875 C18.2898671,114.698164 9.39848669,105.986822 2.05398734,95.5786944 L1.95666894,95.4286598 C-0.0217683779,92.372271 0.252342562,88.3913871 2.63136596,85.6300954 L28.8014619,55.254913 C30.9320632,52.7819605 34.6861634,52.4855277 37.1864794,54.5928117 Z" id="Path" fill="url(#linearGradient-2)"></path>
+                <path d="M115.262042,34.1780046 C115.582605,34.4504576 115.881777,34.7466508 116.156971,35.0640224 L154.640205,79.4453968 C156.894974,82.0457446 157.281003,85.7636569 155.607911,88.7655506 C152.098181,95.062779 147.776619,101.023893 142.643226,106.648892 C126.224899,123.176187 102.888997,133.5 77,133.5 C59.4996359,133.5 43.45988,129.349344 29.640625,121.1875 L103.510682,35.0641199 C106.508579,31.6066404 111.769843,31.2099131 115.262042,34.1780046 Z" id="Path" fill="url(#linearGradient-3)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
