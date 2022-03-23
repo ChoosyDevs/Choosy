@@ -61,7 +61,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Creators</a></li>
+    <li><a href="#creators">Creators</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -70,7 +70,7 @@
   </ol>
 </details>
 
-<!-- Introduction -->
+<!-- INTRODUCTION -->
 
 ## Introduction
 
@@ -78,6 +78,7 @@ Choosy is a user-based app that allows others to vote on which of your photos th
 
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 
 ### App concept
 
@@ -95,134 +96,74 @@ And that’s how we got inspired to create Choosy!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-
+<!-- IMPLEMENTATION -->
 
 ## Implementation
 
-This is a list of the main frameworks that were used for the development of the app. 
+
+With regard to the principles mentioned above, we used the following technologies for the development of the app: 
 
 -   [React Native](https://reactnative.dev/)
 -   [Node.js](https://nodejs.org/en/)
 -   [Express.js](https://expressjs.com/)
 -   [MondoDB](https://www.mongodb.com/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
--   npm
-    ```sh
-    npm install npm@latest -g
-    ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-    ```sh
-    git clone https://github.com/your_username_/Project-Name.git
-    ```
-3. Install NPM packages
-    ```sh
-    npm install
-    ```
-4. Enter your API in `config.js`
-    ```js
-    const API_KEY = "ENTER YOUR API";
-    ```
+More details about the implementation details and practises used can be found inside the [frontend](https://github.com/ApostolisGaros/ChoosyProject/tree/main/frontend) and [backend](https://github.com/ApostolisGaros/ChoosyProject/tree/main/backend) folders.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
 
-## Usage
+<!-- TARGETS -->
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+## Targets
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Our main goal was to produce an application that is:
+- ***performant***
+- ***scalable***
+- ***maintainable*** 
+- ***secure***  
+- ***easy to use*** 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ROADMAP -->
-
-## Roadmap
-
--   [x] Add Changelog
--   [x] Add back to top links
--   [ ] Add Additional Templates w/ Examples
--   [ ] Add "components" document to easily copy & paste sections of the readme
--   [ ] Multi-language Support
-    -   [ ] Chinese
-    -   [ ] Spanish
-
-See the [open issues](https://github.com/ApostolisGaros/ChoosyProject/issues) for a full list of proposed features (and known issues).
+We regard our final product to be a success, since through stress and user testing we came to the conclusion that all of the above requirments were fulfilled to a satisfying degree. Additionally, we received a decent amount of user feedback, the vast majority of which was strongly positive (also indicated by our reviews on both App store and Play store).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
 
-## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+<!-- CREATORS -->
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+## Creators
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+This project was created by [Apostolis Garos](https://github.com/ApostolisGaros) and [Nick Vlachakis](https://github.com/NikosVlah), two undergraduate students studying Electrical and Computer Engineering at National Technical University of Athens. 
+
+We both contributed at the design, development and deployment of the entire system and application. Coming from a period of thoroughly studying software engineering through university classes and personal online research, this was our first production level project. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- LICENSE -->
 
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Apostolis Garos - [LinkedIn](https://www.linkedin.com/in/apostolis-garos-603902197/) - [apostolisgaros@gmail.com](mailto:apostolisgaros@gmail.com)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Nick Vlachakis - [LinkedIn](https://www.linkedin.com/in/nikos-vlachakis-49a33815a/) - [nvlachakis1999@gmail.com](mailto:nvlachakis1999@gmail.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the BSD-3-Clause License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
--   [Choose an Open Source License](https://choosealicense.com)
--   [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
--   [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
--   [Malven's Grid Cheatsheet](https://grid.malven.co/)
--   [Img Shields](https://shields.io)
--   [GitHub Pages](https://pages.github.com)
--   [Font Awesome](https://fontawesome.com)
--   [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
