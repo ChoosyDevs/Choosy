@@ -274,7 +274,7 @@ const App = () => {
       if (state.isConnected === true) {
         dispatch(setInternetConnection(true));
       } else {
-        //nothing
+        //we donothing
       }
     });
   };
