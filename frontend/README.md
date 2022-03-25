@@ -1,13 +1,6 @@
 <div id="top"></div>
 
 
-
-
-
-<!-- PROJECT LOGO -->
-
-
-
 <!-- ABOUT THE PROJECT -->
 # Frontend
 
@@ -57,6 +50,24 @@ Since our application needed custom Gesture Animations, we utilised the react-na
 -   [lottie-react-native](https://github.com/lottie-react-native/lottie-react-native)   
 We spiced our UI up by using some animations from Lottie, which provided us with a huge variety of concepts to choose from.
 
-## Challenges
-Some of the biggest challenges we faced and the ways we solved them
+<p align="right">(<a href="#top">back to top</a>)</p>
 
+## Challenges
+Some challenges that we faced and the ways we solved them:
+
+
+---
+
+:question: While uploading a poll, if the user exited the app the upload failed.
+
+:heavy_check_mark: This had a different behaviour between the two platforms. While it worked as expected in Android (the upload did not fail), on iOS it was problematic. After thorough debugging and researching, we came to the conclusion that this happened because the operating system of Apple mobile devices had a more aggressive approach when removing applications from the foreground. We solved this by altering the application's permissions to remain on the foreground for a longer period, so that it could wrap up unfinished tasks like uploading images without draining the device's battery and resources.
+
+
+---
+
+:question:  Custom Animated components not found in any library.
+
+:heavy_check_mark: Instead of downgrading our design and settling for the components we found in libraries, we created our own reusable Animated Components, using react-native-reanimated, react-native-gesture-handler and React Native's Animated library.
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
