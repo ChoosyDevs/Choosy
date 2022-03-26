@@ -288,6 +288,7 @@ router.get("/uploads/all", auth, async (req, res) => {
             }
         }
     } else {
+        // Find the next X uploads that the user has not interacted with
         try {
             const birthday = new Date(req.user.birthday);
             const dateNow = new Date(Date.now());
@@ -335,20 +336,25 @@ router.get("/uploads/all", auth, async (req, res) => {
     }
 });
 
-
+// Authenticated user votes for a specific photo of an upload 
 router.patch("/uploads/vote", auth, async (req, res) => {
     try {
+        // Find the upload that user interacts with
         const uploadToVote = await Upload.findById(req.body.id1).select(
             "visited skipped photos totalvotes finalDate"
         );
+        // Find if user has already seen that upload again
         const alreadyVisited = await uploadToVote.visited.find(
             (user) => user.id === req.user.id
         );
+
+        // Find if user has already skipped that upload
         const alreadySkipped = await uploadToVote.skipped.find(
             (user) => user.id === req.user.id
         );
+        
+        // Check that user has not already interacted with that upload again and do the neccesary changes
         if (!alreadyVisited || alreadySkipped) {
-            //const photo = await uploadToVote.photos.find(photo => photo.id === req.body.id2);
             let counter, photo;
             for (let i = 0; i < uploadToVote.photos.length; i++) {
                 counter = i;
@@ -359,6 +365,7 @@ router.patch("/uploads/vote", auth, async (req, res) => {
             }
 
             try {
+                // Creates the votedUpload object and pushes it in user model
                 let votedUpload = {
                     _id: uploadToVote._id,
                     votedPhoto: counter,
@@ -367,6 +374,7 @@ router.patch("/uploads/vote", auth, async (req, res) => {
                 req.user.votedUploads.push(votedUpload);
                 req.user.level++;
                 await req.user.save();
+                // Increase the number of votes for the selected photo
                 photo.votes++;
                 uploadToVote.totalvotes++;
                 if (!alreadyVisited) {
@@ -381,7 +389,7 @@ router.patch("/uploads/vote", auth, async (req, res) => {
                     );
                     uploadToVote.skipped = newSkippedArray;
                 }
-                //
+                // Save the changes of the current upload
                 await uploadToVote.save();
                 res.sendStatus(200);
             } catch (e) {
@@ -395,23 +403,29 @@ router.patch("/uploads/vote", auth, async (req, res) => {
     }
 });
 
+// Authenticated user skips a specific upload 
 router.patch("/uploads/skip", auth, async (req, res) => {
     try {
+       // Find the upload that user interacts with
         const upload = await Upload.findById(req.body.id1).select(
             "visited skipped"
         );
+        // Check if user has already seen that upload
         const alreadyVisited = await upload.visited.find(
             (user) => user.id === req.user.id
         );
         if (!alreadyVisited) {
+            // Add user to visited and skipped array
             upload.visited.push(req.user.id);
             upload.skipped.push(req.user.id);
             await upload.save();
         } else {
+            // Modify the skip array
             const newSkippedArray = upload.skipped.filter((item) => {
                 return item._id != req.user.id;
             });
             upload.skipped = newSkippedArray;
+            // Save the changes of the current Upload
             await upload.save();
         }
         res.sendStatus(200);
@@ -420,6 +434,7 @@ router.patch("/uploads/skip", auth, async (req, res) => {
     }
 });
 
+//Authenticated user converts a specific upload from active to inactive state
 router.patch("/uploads/active", auth, async (req, res) => {
     try {
         const upload = await Upload.findById(req.body.id).select("active date");
@@ -432,6 +447,7 @@ router.patch("/uploads/active", auth, async (req, res) => {
     }
 });
 
+//Authenticated user deletes a specific upload 
 router.delete("/uploads/deleteUpload", auth, async (req, res) => {
     try {
         await Upload.deleteOne({ _id: req.body.id });
@@ -441,10 +457,13 @@ router.delete("/uploads/deleteUpload", auth, async (req, res) => {
     }
 });
 
+// Authenticated user deletes a specific photo for an upload 
 router.delete("/uploads/deletePhoto", auth, async (req, res) => {
     try {
+        // Find the upload that user interacts with
         const upload = await Upload.findById(req.body.id1);
         try {
+            // Find and remove the photo with specific id
             let newArray = [];
             let removedItemVotes = 0;
             upload.photos.forEach((item) => {
@@ -454,10 +473,13 @@ router.delete("/uploads/deletePhoto", auth, async (req, res) => {
                     removedItemVotes = item.votes;
                 }
             });
+            // Update the photos array with the new one
             upload.photos = newArray;
             if (upload.totalvotes !== 0) {
+                // Update the number of totalvotes with the correct one
                 upload.totalvotes -= removedItemVotes;
             }
+            // Save the new photos array for the upload
             await upload.save();
             res.sendStatus(200);
         } catch (e) {
@@ -468,10 +490,13 @@ router.delete("/uploads/deletePhoto", auth, async (req, res) => {
     }
 });
 
+// Authenticated user makes a report for a specific upload 
 router.patch("/uploads/reported", auth, async (req, res) => {
     try {
+       // Find the upload that user interacts with
         const upload = await Upload.findById(req.body.id1);
         try {
+            // Add the user Id to the reported list and increase the number of reports for the specific upload
             upload.reported.push(req.user.id);
             upload.numberOfReported++;
             await upload.save();
