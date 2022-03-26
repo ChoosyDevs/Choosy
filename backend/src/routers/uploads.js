@@ -12,18 +12,21 @@ let storage = multer.memoryStorage();
 // Prepare multer for file upload
 const upload = multer({
     storage: storage,
+    // Set the limits of file size
     limits: {
         fileSize: 100000000,
     },
     fileFilter(req, file, cb) {
+        // Valid types of images
         if (!file.originalname.match(/\.(jpg|jpeg|png|JPG)$/)) {
+            // If the file is not an image returns error
             return cb(new Error("Please upload an image"));
         }
         cb(undefined, true);
     },
 });
 
-// Upload poll using multer
+// Upload poll using multer, with user authentication and maximum number of photos as a middleware
 router.post("/uploads", auth, upload.array("photos", 6), async (req, res) => {
     let photos = await Promise.all(
         // For every photo initialise fields
@@ -33,12 +36,14 @@ router.post("/uploads", auth, upload.array("photos", 6), async (req, res) => {
                 let dimensions = sizeOf(file.buffer);
                 const imageUrl = await uploadImage(file);
                 if (
+                    // If something goes wrong with either the upload in Google Cloud or the photos passed from the front-end, returns error
                     imageUrl === null ||
                     dimensions.width === 0 ||
                     dimensions.height === 0
                 ) {
                     throw new Error();
                 } else {
+                    // Here is the creation of photos property in upload object 
                     data = {
                         uri: imageUrl,
                         votes: 0,
@@ -47,7 +52,6 @@ router.post("/uploads", auth, upload.array("photos", 6), async (req, res) => {
                     };
                 }
             } catch (e) {
-                console.log("Upload 402 error is :", e);
                 res.sendStatus(402);
             }
             return data;
@@ -82,7 +86,7 @@ router.post("/uploads", auth, upload.array("photos", 6), async (req, res) => {
     }
 });
 
-// Upload profile picture
+// Upload profile picture with user authentication and single photo as a middleware
 router.post(
     "/uploads/profileAvatar",
     auth,
@@ -94,6 +98,7 @@ router.post(
         try {
           // Upload using multer
             const imageUrl = await uploadImage(file);
+            // Here is a check if something goes wrong with the imageUrl
             if (imageUrl === null) {
                 throw new Error();
             } else {
@@ -103,6 +108,7 @@ router.post(
             res.sendStatus(402);
         }
         try {
+            // This try block ensures that the new profile photo will be updated in all the actions user has done in the past
             req.user.Thumbnail = data.Thumbnail;
             let conditions = { owner: req.user._id };
             let update = {
@@ -122,7 +128,7 @@ router.post(
     }
 );
 
-// Return all the uploads of the user, sorted by date
+// Returns all the uploads of the user, sorted by date if goes through the user authentication middleware
 router.get("/uploads/me", auth, async (req, res) => {
     try {
         await req.user
@@ -194,6 +200,7 @@ router.get("/uploads/all", auth, async (req, res) => {
                     .limit(parseInt(req.query.limit));
 
                 if (uploads.length == 0) {
+                     // Find the uploads that user has already skipped them
                     const uploadsSkipped = await Upload.find({
                         owner: { $nin: req.user.hatedUsers, $ne: req.user.id },
                         shadowBanUpload: { $eq: false },
@@ -211,6 +218,7 @@ router.get("/uploads/all", auth, async (req, res) => {
                         .limit(50);
 
                     if (uploadsSkipped.length == 0) {
+                        // Error handling
                         if (e == "Error: promoteLink")
                             res.status(201).send(uploadsSkipped);
                         else {
@@ -556,14 +564,5 @@ router.patch("/uploads/reported", auth, async (req, res) => {
     }
 });
 
-// Returns the total number of uploads on the Uploads collection
-router.get("/uploads/number", async (req, res) => {
-    try {
-        const number = await Upload.countDocuments();
-        res.status(201).send(number.toString());
-    } catch (e) {
-        res.status(400).send(e);
-    }
-});
 
 module.exports = router;

@@ -14,25 +14,6 @@ router.get('/users/me/level', auth, async (req, res) => {
     res.send(req.user.level)
 })
 
-// router.get('/users/search', (req, res) => {
-//   try {
-//     const array = []
-//     const searchedField = req.query.username;
-//         // User.find({name:{$regex: searchedField }})
-//     let regexp = new RegExp(`</^${searchedField}/>`); 
-//     User.find({name:regexp})
-//     .then(data => {
-//       data.map((dat,i) => {
-//         array.push(data[i].name)
-//       })
-//       res.send(array)
-//     })
-//   }
-//   catch(e) {
-//     res.status(400).send(e)
-//     } 
-//   })
-
 
 router.post('/users/checkEmail', async (req, res) => {
     const email =  req.body.email;

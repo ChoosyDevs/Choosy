@@ -40,7 +40,6 @@ app.post("/auth/users/register", async (req, res) => {
                 // Return the user and the tokens
                 res.status(201).send({ user, token, refreshToken });
             } catch (e) {
-                console.log("Error Register", e);
                 res.sendStatus(400);
             }
         } else {
@@ -90,18 +89,17 @@ app.post("/auth/token", async (req, res) => {
             "refreshTokens.refreshToken": refreshToken,
         });
 
-        // If the user doesnt exist
+        // If the user does not exist
         if (!user) {
             throw new Error();
         } else if (user.banned === false) {
-            // If the user exists, generate new short term token
+            // If the user exists and has not been banned, generate new short term token
             const token = await user.generateAuthToken();
             res.status(201).send({ user, token, refreshToken });
         } else {
             res.sendStatus(412);
         }
     } catch (e) {
-        console.log("error authServer.js", e);
         res.status(400).send("Auth server token error");
     }
 });
