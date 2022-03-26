@@ -335,86 +335,6 @@ router.get("/uploads/all", auth, async (req, res) => {
     }
 });
 
-router.get("/uploads/votedUploads", auth, async (req, res) => {
-    try {
-        if (req.user.votedUploads.length > 0) {
-            //Here we get rid of expired polls from votedUploads array
-            let newvotedUploadsArray = [];
-            for (let i = 0; i < req.user.votedUploads.length; i++) {
-                let expiredDate = new Date(
-                    req.user.votedUploads[i].expiredDate
-                );
-                let dateNow = new Date(Date.now());
-                if (expiredDate >= dateNow)
-                    newvotedUploadsArray.push(req.user.votedUploads[i]);
-                else {
-                    //check if is still active
-                    const uploadActive = await Upload.findOne({
-                        _id: { $eq: req.user.votedUploads[i]._id },
-                    }).select("active");
-                    if (uploadActive.active)
-                        newvotedUploadsArray.push(req.user.votedUploads[i]);
-                }
-            }
-            req.user.votedUploads = newvotedUploadsArray;
-            await req.user.save();
-
-            if (req.user.votedUploads.length > 0) {
-                let ids = [];
-                let votedPhotos = [];
-                let finalArray = [];
-                let counter = 0;
-                let localSkipNumber = 0;
-                //counter help us retrieve just 10 items from the array
-                //the most recent item in votedUploadsArray is in the bottom so the for loop begins from the end
-
-                if (req.query.skipNumber > req.user.votedUploads.length) {
-                    throw new Error("DontHaveOther");
-                } else {
-                    localSkipNumber = req.query.skipNumber;
-                }
-                for (
-                    let i = req.user.votedUploads.length - 1 - localSkipNumber;
-                    i >= 0;
-                    i--
-                ) {
-                    counter++;
-                    ids.push(req.user.votedUploads[i]._id);
-                    votedPhotos.push(req.user.votedUploads[i].votedPhoto);
-                    if (counter === 10) break;
-                }
-
-                await Upload.find({
-                    _id: { $in: ids },
-                }).then((docs) => {
-                    //we order query results depending on ids array and we create the final array
-                    for (let i = 0; i < ids.length; i++) {
-                        for (let j = 0; j < docs.length; j++) {
-                            if (docs[j]._id.toString() === ids[i].toString()) {
-                                let newDoc = {};
-                                newDoc.totalvotes = docs[j].totalvotes;
-                                newDoc.ownerName = docs[j].ownerName;
-                                newDoc.ownerThumbnail = docs[j].ownerThumbnail;
-                                newDoc.photos = docs[j].photos;
-                                newDoc.votedPhoto = votedPhotos[i];
-                                newDoc.createdAt = docs[j].createdAt;
-                                newDoc.targetSocialMedia =
-                                    docs[j].targetSocialMedia;
-                                finalArray.push(newDoc);
-                                break;
-                            }
-                        }
-                    }
-                });
-                res.status(200).send(finalArray);
-            } else res.status(200).send([]);
-        } else res.status(200).send([]);
-    } catch (e) {
-        if (e == "Error: DontHaveOther") {
-            res.status(200).send([]);
-        } else res.sendStatus(400);
-    }
-});
 
 router.patch("/uploads/vote", auth, async (req, res) => {
     try {
@@ -563,6 +483,5 @@ router.patch("/uploads/reported", auth, async (req, res) => {
         res.sendStatus(500);
     }
 });
-
 
 module.exports = router;

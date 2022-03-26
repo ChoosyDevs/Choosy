@@ -8,8 +8,6 @@
 
 Our frontend is a native mobile application, operating on both Android and iOS platforms.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Built With
 
@@ -55,12 +53,25 @@ We spiced our UI up by using some animations from Lottie, which provided us with
 ## Challenges
 Some challenges that we faced and the ways we solved them:
 
-
 ---
 
 :question: While uploading a poll, if the user exited the app the upload failed.
 
 :heavy_check_mark: This had a different behaviour between the two platforms. While it worked as expected in Android (the upload did not fail), on iOS it was problematic. After thorough debugging and researching, we came to the conclusion that this happened because the operating system of Apple mobile devices had a more aggressive approach when removing applications from the foreground. We solved this by altering the application's permissions to remain on the foreground for a longer period, so that it could wrap up unfinished tasks like uploading images without draining the device's battery and resources.
+
+
+---
+
+:question: On Android, our app would take an average 8-12 seconds to move from the splash screen to the main application.
+
+:heavy_check_mark: We used different approaches of tackling this problem. We considered the case that there was a mistake on our code, but we soon realised that this wasn't the case, since the problem was not present on iOS devices (average splash screen time was 1-2 seconds). We tried almost every possible performance optimisation such as minimizing bundle size, using the Hermes JavaScript engine and tried loading a smaller part of the application, but without success. After even more thorough debugging we found out that the problem occured due to **react-native-keychain** having a cold start period every time the app came to the foreground. We solved the issue by using a slightly older version of the tool, that did not use that approach.
+
+
+---
+
+:question: Even though our app was running smoothly on high end devices, we had significantly worse performance on lower end phones.
+
+:heavy_check_mark: The solution to this problem was to go through the code base, refactor our code using newer and better practises so that we avoided unnecessary rerenders that hindered our performance. 
 
 
 ---
