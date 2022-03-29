@@ -81,7 +81,6 @@ router.post("/uploads", auth, upload.array("photos", 6), async (req, res) => {
         await req.user.save();
         res.status(201).send({ uploadId: upload._id });
     } catch (e) {
-        console.log("Upload 500 error is : ", e);
         res.sendStatus(500);
     }
 });
