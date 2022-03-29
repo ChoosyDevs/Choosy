@@ -100,7 +100,7 @@ With regard to the principles mentioned above, we used the following technologie
 -   [Express.js](https://expressjs.com/)
 -   [MongoDB](https://www.mongodb.com/)
 
-More details about the implementation details and practises used can be found inside the [frontend](https://github.com/ApostolisGaros/ChoosyProject/tree/main/frontend) and [backend](https://github.com/ApostolisGaros/ChoosyProject/tree/main/backend) folders.
+More details about the implementation and practises used can be found inside the [frontend](https://github.com/ApostolisGaros/ChoosyProject/tree/main/frontend) and [backend](https://github.com/ApostolisGaros/ChoosyProject/tree/main/backend) folders.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
