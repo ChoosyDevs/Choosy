@@ -26,6 +26,8 @@ We utilised Firebase for a variety of tasks, such as Analytics (more details fol
 -   [React Navigation](https://reactnavigation.org/)   
 We chose React Navigation as our main navigation solution as it is a widely used product, maintained by an active community of contributors and has excellent documentation for every usecase.
 
+-   [Redux.js](https://redux.js.org/)
+We used Redux for our state management and business logic. It is a widely used tool that we believe offers many advantages when compared to React Native's native state management.
 
 -   [react-native-keychain](https://github.com/oblador/react-native-keychain)   
 We used react-native-keychain as it is a reliable library that can securely store sensitive data on the users device, vital to our application's  operation.
@@ -48,6 +50,9 @@ Since our application needed custom Gesture Animations, we utilised the react-na
 -   [lottie-react-native](https://github.com/lottie-react-native/lottie-react-native)   
 We spiced our UI up by using some animations from Lottie, which provided us with a huge variety of concepts to choose from.
 
+-   [react-native-responsive-screen](https://www.npmjs.com/package/react-native-responsive-screen)
+We utilized react-native-responsive-screen for our application's responsivenes. It is an basic tool that provides an easy way to make our app's UX consistent among various screen sizes.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Challenges
@@ -66,6 +71,12 @@ Some challenges that we faced and the ways we solved them:
 
 :heavy_check_mark: We used different approaches of tackling this problem. We considered the case that there was a mistake on our code, but we soon realised that this wasn't the case, since the problem was not present on iOS devices (average splash screen time was 1-2 seconds). We tried almost every possible performance optimisation such as minimizing bundle size, using the Hermes JavaScript engine and tried loading a smaller part of the application, but without success. After even more thorough debugging we found out that the problem occured due to **react-native-keychain** having a cold start period every time the app came to the foreground. We solved the issue by using a slightly older version of the tool, that did not use that approach.
 
+
+---
+
+:question: At the final stages of testing our app before releasing to production, we were concerned about whether all of our user would get a consistently good user experience and performance from our app.
+
+:heavy_check_mark: Although we tested on different devices, it is impossible to have every single one covered. We set up Firebase Analytics on our app since it provides very decent analytic data, that we can use to monitor our application's performance. It also allows us to get detailed information on our audiences so that we could decide on new features for future updates.
 
 ---
 
