@@ -12,6 +12,7 @@ const auth = async (req, res, next) => {
             "tokens.token": token,
         });
 
+        // If user does not exist do not continue the authentication process
         if (!user) {
             throw new Error();
         }

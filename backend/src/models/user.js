@@ -111,7 +111,7 @@ const userSchema = new mongoose.Schema(
                 },
             },
         ],
-        // Wether this user is verified
+        // Whether this user is verified
         verified: {
             type: Boolean,
             default: false,
@@ -122,6 +122,7 @@ const userSchema = new mongoose.Schema(
     }
 );
 
+//associate userSchema and uploadSchema through the below attributes
 userSchema.virtual("uploads", {
     ref: "Upload",
     localField: "_id",
@@ -235,6 +236,7 @@ userSchema.pre("remove", async function (next) {
     next();
 });
 
+// Create the User Mongoose model in order to provide an interface to the database for creating, querying, updating and deleting records
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

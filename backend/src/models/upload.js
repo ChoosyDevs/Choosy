@@ -133,6 +133,7 @@ uploadSchema.methods.toJSON = function () {
     return uploadObject;
 };
 
+// Create the Upload Mongoose model in order to provide an interface to the database for creating, querying, updating and deleting records
 const Upload = mongoose.model("Upload", uploadSchema);
 
 module.exports = Upload;

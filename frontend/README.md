@@ -34,7 +34,7 @@ We used react-native-keychain as it is a reliable library that can securely stor
 ### Analytics
 
 -   [Firebase Analytics](https://firebase.google.com/docs/analytics)   
-We used Firebase (Google) Analytics as it was easy to set up, cost effective, used by many projects similar to ours and is a product of a reliable company. We used several products of the Firebase SDK to track stats like audience, conversions, realime analytics and more technical details like performance reports and crashalytics.
+We used Firebase (Google) Analytics as it was easy to set up, cost effective, used by many projects similar to ours and is a product of a reliable company. We used several products of the Firebase SDK to track stats like audience, conversions, real time analytics and more technical details like performance reports and crashalytics.
 
 
 ### UI details 
