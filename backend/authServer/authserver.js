@@ -69,7 +69,6 @@ app.post("/auth/users/login", async (req, res) => {
             res.status(200).send({ user, token, refreshToken });
         }
     } catch (e) {
-        console.log(e);
         res.sendStatus(400);
     }
 });
