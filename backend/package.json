@@ -2,7 +2,7 @@
   "name": "photo-back",
   "version": "1.0.0",
   "description": "",
-  "main": "kappa.js",
+  "main": "index.js",
   "scripts": {
     "start": "env-cmd -f ./config/dev.env nodemon src/index.js",
     "auth": "env-cmd -f ./config/dev.env nodemon authServer/authserver.js"

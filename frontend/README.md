@@ -8,8 +8,6 @@
 
 Our frontend is a native mobile application, operating on both Android and iOS platforms.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Built With
 
