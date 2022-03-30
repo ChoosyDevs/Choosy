@@ -126,7 +126,7 @@ We both contributed at every part of the design, development and deployment of t
 
 Apostolis Garos - [LinkedIn](https://www.linkedin.com/in/apostolis-garos-603902197/) - [apostolisgaros@gmail.com](mailto:apostolisgaros@gmail.com)
 
-Nick Vlachakis - [LinkedIn](https://www.linkedin.com/in/nikos-vlachakis-49a33815a/) - [nvlachakis1999@gmail.com](mailto:nvlachakis1999@gmail.com)
+Nikos Vlachakis - [LinkedIn](https://www.linkedin.com/in/nikos-vlachakis-49a33815a/) - [nvlachakis1999@gmail.com](mailto:nvlachakis1999@gmail.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
