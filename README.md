@@ -112,7 +112,7 @@ More details about the implementation and practises used can be found inside the
 
 ## Creators
 
-This project was created by [Apostolis Garos](https://github.com/ApostolisGaros) and [Nick Vlachakis](https://github.com/NikosVlachakis), two undergraduate students studying Electrical and Computer Engineering at National Technical University of Athens. 
+This project was created by [Apostolis Garos](https://github.com/ApostolisGaros) and [Nikos Vlachakis](https://github.com/NikosVlachakis), two undergraduate students studying Electrical and Computer Engineering at National Technical University of Athens. 
 
 We both contributed at every part of the design, development and deployment of the entire system and application. Coming from a period of thoroughly studying software engineering through university classes and personal online research, this was our first production level project. 
 
